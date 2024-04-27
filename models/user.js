@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -72,15 +77,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    password: {
+    pin: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'password should be in request body'
+          msg: 'pin should be in request body'
         },
         notEmpty: {
-          msg: `password can't contain empty string`
+          msg: `pin can't contain empty string`
         }
       }
     }
@@ -90,16 +95,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.beforeCreate(user => {
-    const hashPassword = hashSync(user.password, 10)
-    user.password = hashPassword
-    user.username = user.username.toLowerCase()
+    const hashPin = hashSync(user.pin, 10)
+    user.pin = hashPin
     user.email = user.email.toLowerCase()
   })
 
   User.beforeUpdate(user => {
-    const hashPassword = hashSync(user.password, 10)
-    user.password = hashPassword
-    user.username = user.username.toLowerCase()
+    const hashPin = hashSync(user.pin, 10)
+    user.pin = hashPin
     user.email = user.email.toLowerCase()
   })
 
