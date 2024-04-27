@@ -1,9 +1,11 @@
-const express = require('express')
-const app = express()
 require('dotenv').config()
-const PORT = process.env.PORT || 3030
-const morgan = require('morgan')
-const userRouter = require('./routes/userRoute.js')
+
+const 
+    express = require('express'),
+    app = express(),
+    PORT = process.env.PORT || 3030,
+    morgan = require('morgan'),
+    userRouter = require('./routes/userRoute.js')
 
 app.use(express.json())
 app.use(morgan('dev'))
