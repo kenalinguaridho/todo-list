@@ -5,12 +5,14 @@ const
     app = express(),
     PORT = process.env.PORT || 3030,
     morgan = require('morgan'),
-    userRouter = require('./routes/userRoute.js')
+    userRouter = require('./routes/userRoute.js'),
+    toDoListRoute = require('./routes/todolistRoute.js')
 
 app.use(express.json())
 app.use(morgan('dev'))
 
 app.use('/api', userRouter)
+app.use('/api', toDoListRoute)
 
 app.use((err, req, res, next) => {
     res.status(500).json({
