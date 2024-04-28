@@ -15,10 +15,31 @@ module.exports = (sequelize, DataTypes) => {
   }
   Activity.init({
     userId: DataTypes.UUID,
-    activity: DataTypes.TEXT,
-    description: DataTypes.TEXT,
+    activity: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'name should be in request body'
+        },
+        notEmpty: {
+          msg: `name can't contain empty string`
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'name should be in request body'
+        },
+        notEmpty: {
+          msg: `name can't contain empty string`
+        }
+      }
+    },
     status: DataTypes.STRING,
-    dueDate: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Activity',
