@@ -1,5 +1,16 @@
-const express = require('express')
-const toDoList = express.router()
+const
+    express = require('express'),
+    passport = require('../lib/passport'),
+    Auth = require('../lib/auth'),
+    toDoListRoute = express.Router(),
+    { ToDoListController } = require('../controllers/todolistController')
 
-// toDoList
-//     .post('')
+toDoListRoute.use(passport.initialize(), Auth.authentication)
+
+toDoListRoute
+    .post('/todolist', ToDoListController.create)
+    .get('/todolist', ToDoListController.getToDoList)
+    .update('/todolist/:id', ToDoListController.updateToDoListStatus)
+    .delete('/todolist/:id', ToDoListController.deleteToDoList)
+
+module.exports = toDoListRoute
