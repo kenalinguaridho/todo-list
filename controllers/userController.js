@@ -1,4 +1,4 @@
-const 
+const
     { Op } = require('sequelize'),
     { User } = require('../models'),
     { compareSync } = require('bcryptjs'),
@@ -81,7 +81,7 @@ class UserController {
             if (!comparePassword) {
                 return res.status(400).json({
                     status: 'failed',
-                        message: `password didn't match`
+                    message: `password didn't match`
                 })
             }
 
