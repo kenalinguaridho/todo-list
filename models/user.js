@@ -86,6 +86,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: `pin can't contain empty string`
+        },
+        len: {
+          args: [6],
+          msg: 'pin must be 6 char length'
         }
       }
     }
