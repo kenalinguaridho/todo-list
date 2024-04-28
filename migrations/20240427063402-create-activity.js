@@ -28,9 +28,6 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      dueDate: {
-        type: Sequelize.DATE
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
