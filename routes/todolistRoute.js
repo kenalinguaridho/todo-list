@@ -10,7 +10,7 @@ toDoListRoute.use(passport.initialize(), Auth.authentication)
 toDoListRoute
     .post('/todolist', ToDoListController.create)
     .get('/todolist', ToDoListController.getToDoList)
-    .update('/todolist/:id', ToDoListController.updateToDoListStatus)
+    .patch('/todolist/:id', ToDoListController.updateToDoListStatus)
     .delete('/todolist/:id', ToDoListController.deleteToDoList)
 
 module.exports = toDoListRoute
